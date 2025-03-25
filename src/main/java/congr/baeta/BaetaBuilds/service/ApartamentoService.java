@@ -41,6 +41,11 @@ public class ApartamentoService {
                     aptos.add(new RetornoCadAptoDTO(novoApto.getNumApto()));
                 }
             }
+        } else {
+            for(int i = 1; i <= intervalo; i++){
+                var novoApto = apartamentoRepository.save(new Apartamento(i, torre));
+                aptos.add(new RetornoCadAptoDTO(novoApto.getNumApto()));
+            }
         }
 
         return aptos;

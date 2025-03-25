@@ -4,9 +4,18 @@ import java.util.List;
 
 import congr.baeta.BaetaBuilds.model.Torre;
 
-public record RetornoCadTorreDTO(String nomeTorre,
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+
+public record RetornoCadTorreDTO(@NotBlank
+                                String nomeTorre,
+                                @NotBlank
                                 String endereco,
+                                @NotBlank
+                                @Pattern(regexp = "\\d{5}-\\d{3}")
                                 String cep,
+                                @NotNull
                                 int totalAptos,
                                 List<RetornoCadAptoDTO> apartamentos) {
 

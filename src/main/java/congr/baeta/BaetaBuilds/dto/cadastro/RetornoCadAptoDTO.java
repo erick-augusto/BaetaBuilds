@@ -1,5 +1,7 @@
 package congr.baeta.BaetaBuilds.dto.cadastro;
 
-public record RetornoCadAptoDTO(int numApto) {
+import jakarta.validation.constraints.NotNull;
+
+public record RetornoCadAptoDTO(@NotNull int numApto) {
 
 }

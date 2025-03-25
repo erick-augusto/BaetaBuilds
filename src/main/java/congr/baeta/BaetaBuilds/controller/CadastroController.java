@@ -16,6 +16,7 @@ import congr.baeta.BaetaBuilds.service.ApartamentoService;
 import congr.baeta.BaetaBuilds.service.TerritorioService;
 import congr.baeta.BaetaBuilds.service.TorreService;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/cadastro")
@@ -30,7 +31,7 @@ public class CadastroController {
 
     @PostMapping("/novo")
     @Transactional
-    public ResponseEntity<RetornoCadTorreDTO> cadastrar(@RequestBody DadosCondominioDTO dados) {
+    public ResponseEntity<RetornoCadTorreDTO> cadastrar(@RequestBody @Valid DadosCondominioDTO dados) {
         //Cadastra o território
         var totalAptos = dados.totalAptosTorre();
         var territorio = territorioService.cadTerrirorio(totalAptos);
@@ -46,7 +47,7 @@ public class CadastroController {
 
     @PostMapping("/add")
     @Transactional
-    public ResponseEntity<RetornoCadTorreDTO> addTorre(@RequestBody DadosCondominioDTO dados) {
+    public ResponseEntity<RetornoCadTorreDTO> addTorre(@RequestBody @Valid DadosCondominioDTO dados) {
         //Autaliza o território
         var territorioID = dados.territorioID();
         var territorio = territorioService.findById(territorioID);
