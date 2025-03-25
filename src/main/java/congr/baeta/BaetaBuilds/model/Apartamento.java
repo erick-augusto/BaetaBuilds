@@ -42,4 +42,9 @@ public class Apartamento {
         this.nomeResponsavel = cadastro.nomeResponsavel();
         this.torre = cadastro.torre();
     }
+
+    public Apartamento(int numApto, Torre torre) {
+        this.numApto = numApto;
+        this.torre = torre;
+    }
 }

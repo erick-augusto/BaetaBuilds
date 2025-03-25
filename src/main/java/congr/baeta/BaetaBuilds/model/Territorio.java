@@ -15,10 +15,12 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Table(name = "territorio")
 @Entity(name = "Territorio")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "territorioID")
@@ -38,5 +40,9 @@ public class Territorio {
         this.dataInicio = dados.dataInicio();
         this.dataFim = dados.dataFim();
         this.totalAptos = dados.totalAptos();
+    }
+
+    public Territorio(int totalAptos) {
+        this.totalAptos = totalAptos;
     }
 }

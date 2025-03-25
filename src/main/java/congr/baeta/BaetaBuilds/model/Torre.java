@@ -46,4 +46,12 @@ public class Torre {
         this.totalAptosTorre = dados.totalAptosTorre();
         this.territorio = dados.territorio();
     }
+
+    public Torre(String nomeTorre, String endereco, String cep, Integer totalAptos, Territorio territorio) {
+        this.nomeTorre = nomeTorre;
+        this.endereco = endereco;
+        this.cep = cep;
+        this.totalAptosTorre = totalAptos;
+        this.territorio = territorio;
+    }
 }
