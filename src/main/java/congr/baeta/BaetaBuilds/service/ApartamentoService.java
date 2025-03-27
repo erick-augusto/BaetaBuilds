@@ -11,8 +11,10 @@ import congr.baeta.BaetaBuilds.dto.cadastro.DadosCondominioDTO;
 import congr.baeta.BaetaBuilds.dto.cadastro.RetornoCadAptoDTO;
 import congr.baeta.BaetaBuilds.dto.responsavel.RetornoAptosAleatoriosDTO;
 import congr.baeta.BaetaBuilds.model.Apartamento;
+import congr.baeta.BaetaBuilds.model.Territorio;
 import congr.baeta.BaetaBuilds.model.Torre;
 import congr.baeta.BaetaBuilds.repository.ApartamentoRepository;
+import congr.baeta.BaetaBuilds.repository.TerritorioRepository;
 import congr.baeta.BaetaBuilds.repository.TorreRepository;
 
 @Service
@@ -23,6 +25,9 @@ public class ApartamentoService {
 
     @Autowired
     TorreRepository torreRepository;
+
+    @Autowired
+    TerritorioRepository territorioRepository;
 
     public List<RetornoCadAptoDTO> cadastrarApto(DadosCondominioDTO dados, Torre torre){
         System.out.println("Novo apartamento cadastrado");
@@ -54,6 +59,8 @@ public class ApartamentoService {
     public List<RetornoAptosAleatoriosDTO> buscarAptosAleatorios(int totalSolicitado, String responsavel){
         var aptos = apartamentoRepository.buscarAptosDisponiveis(totalSolicitado);
         List<RetornoAptosAleatoriosDTO> lista = new ArrayList<>();
+        
+        //Iterando aparmetos para pegar informações da torre e montar a lista de retorno
         for (int i = 0; i < aptos.size(); i++) {
             var torre = torreRepository.findById(aptos.get(i).getTorre().getTorreID());
 
@@ -66,6 +73,12 @@ public class ApartamentoService {
                     endereco = endereco + " - " + nomeTorre;
                 }
                 lista.add(new RetornoAptosAleatoriosDTO(endereco, cep, numApto));
+
+                //Verifica se o território já foi inicializado
+                var territorio = torre.get().getTerritorio();
+                if(territorio.getDataInicio() == null){
+                    inicializarTerritorio(territorio);
+                }
             }
         }
         usarAptos(aptos, responsavel);
@@ -78,5 +91,10 @@ public class ApartamentoService {
             apto.setNomeResponsavel(nome);
             apartamentoRepository.save(apto);
         }
+    }
+
+    public void inicializarTerritorio(Territorio territorio){
+        territorio.setDataInicio(LocalDate.now());
+        territorioRepository.save(territorio);
     }
 }
