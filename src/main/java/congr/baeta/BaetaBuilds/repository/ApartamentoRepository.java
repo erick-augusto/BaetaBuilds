@@ -16,4 +16,11 @@ public interface ApartamentoRepository extends JpaRepository<Apartamento, Long> 
         LIMIT :total
     """)
     List<Apartamento> buscarAptosDisponiveis(int total);
+
+    @Query("""
+        SELECT count(a) FROM Apartamento a
+        WHERE a.dataEntrega is null
+        AND a.torre.territorio.territorioID = :territorioId
+    """)
+    int verificaAptosFaltando(Long territorioId);
 }

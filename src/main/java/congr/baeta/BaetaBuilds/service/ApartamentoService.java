@@ -79,6 +79,12 @@ public class ApartamentoService {
                 if(territorio.getDataInicio() == null){
                     inicializarTerritorio(territorio);
                 }
+
+                //Se não houver mais apartamentos disponíveis, finaliza o território
+                var aptosFaltando = apartamentoRepository.verificaAptosFaltando(territorio.getTerritorioID());
+                if(aptosFaltando == 0){
+                    finalizarTerritorio(territorio);
+                }
             }
         }
         usarAptos(aptos, responsavel);
@@ -95,6 +101,11 @@ public class ApartamentoService {
 
     public void inicializarTerritorio(Territorio territorio){
         territorio.setDataInicio(LocalDate.now());
+        territorioRepository.save(territorio);
+    }
+
+    public void finalizarTerritorio(Territorio territorio){
+        territorio.setDataFim(LocalDate.now());
         territorioRepository.save(territorio);
     }
 }
