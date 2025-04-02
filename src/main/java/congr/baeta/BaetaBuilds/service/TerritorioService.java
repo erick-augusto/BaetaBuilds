@@ -22,4 +22,8 @@ public class TerritorioService {
         return repository.findById(territorioID);
     }
 
+    public void resetarTerritorios() {
+        repository.resetarTerritorios();
+    }
+
 }

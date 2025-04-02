@@ -108,4 +108,8 @@ public class ApartamentoService {
         territorio.setDataFim(LocalDate.now());
         territorioRepository.save(territorio);
     }
+
+    public void resetarAptos() {
+        apartamentoRepository.resetarAptos();
+    }
 }

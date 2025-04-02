@@ -23,4 +23,11 @@ public interface ApartamentoRepository extends JpaRepository<Apartamento, Long> 
         AND a.torre.territorio.territorioID = :territorioId
     """)
     int verificaAptosFaltando(Long territorioId);
+
+    @Query("""
+        UPDATE Apartamento a
+        SET a.dataEntrega = null
+            , a.responsavel = null
+    """)
+    void resetarAptos();
 }
