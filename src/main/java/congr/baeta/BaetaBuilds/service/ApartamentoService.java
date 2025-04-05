@@ -16,6 +16,7 @@ import congr.baeta.BaetaBuilds.model.Torre;
 import congr.baeta.BaetaBuilds.repository.ApartamentoRepository;
 import congr.baeta.BaetaBuilds.repository.TerritorioRepository;
 import congr.baeta.BaetaBuilds.repository.TorreRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class ApartamentoService {
@@ -109,6 +110,7 @@ public class ApartamentoService {
         territorioRepository.save(territorio);
     }
 
+    @Transactional
     public void resetarAptos() {
         apartamentoRepository.resetarAptos();
     }

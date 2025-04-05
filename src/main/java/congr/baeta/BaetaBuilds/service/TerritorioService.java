@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import congr.baeta.BaetaBuilds.model.Territorio;
 import congr.baeta.BaetaBuilds.repository.TerritorioRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class TerritorioService {
@@ -22,6 +23,7 @@ public class TerritorioService {
         return repository.findById(territorioID);
     }
 
+    @Transactional
     public void resetarTerritorios() {
         repository.resetarTerritorios();
     }

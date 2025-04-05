@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.Modifying;
 
 import congr.baeta.BaetaBuilds.model.Apartamento;
 
@@ -24,10 +25,22 @@ public interface ApartamentoRepository extends JpaRepository<Apartamento, Long> 
     """)
     int verificaAptosFaltando(Long territorioId);
 
+    @Modifying
     @Query("""
         UPDATE Apartamento a
-        SET a.dataEntrega = null
-            , a.responsavel = null
+        SET a.dataEntrega = null,
+            a.nomeResponsavel = null
     """)
     void resetarAptos();
+
+    @Query("""
+        SELECT count(a) FROM Apartamento a
+    """)
+    int countAptos();
+
+    @Query("""
+        SELECT count(a) FROM Apartamento a
+        WHERE a.dataEntrega is not null
+    """)
+    int countAptosFeitos();
 }
