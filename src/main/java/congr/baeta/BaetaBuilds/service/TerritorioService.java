@@ -28,4 +28,9 @@ public class TerritorioService {
         repository.resetarTerritorios();
     }
 
+    @Transactional
+    public void addAptoTerritorio(Territorio territorio, int i) {
+        repository.addAptoTerritorio(territorio.getTerritorioID(), i);
+    }
+
 }

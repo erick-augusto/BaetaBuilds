@@ -23,4 +23,12 @@ public interface TerritorioRepository extends JpaRepository<Territorio, Long>{
         WHERE t.dataInicio IS NOT NULL
     """)
     LocalDate minDatInit();
+
+    @Modifying
+    @Query("""
+        UPDATE Territorio t
+        SET t.totalAptos = t.totalAptos + :i
+        WHERE t.territorioID = :territorioID
+    """)
+    void addAptoTerritorio(Long territorioID, int i);
 }
