@@ -1,12 +1,14 @@
 package congr.baeta.BaetaBuilds.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
 
 import congr.baeta.BaetaBuilds.model.Apartamento;
+import congr.baeta.BaetaBuilds.model.Torre;
 
 public interface ApartamentoRepository extends JpaRepository<Apartamento, Long> {
 
@@ -43,4 +45,11 @@ public interface ApartamentoRepository extends JpaRepository<Apartamento, Long> 
         WHERE a.dataEntrega is not null
     """)
     int countAptosFeitos();
+
+    @Query("""
+        SELECT a FROM Apartamento a
+        WHERE a.numApto = :numApto
+        AND a.torre.torreID = :torreId
+    """)
+    Optional<Apartamento> findApto(Integer numApto, Long torreId);
 }

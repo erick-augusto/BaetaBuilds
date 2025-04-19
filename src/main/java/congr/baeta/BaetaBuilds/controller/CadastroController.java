@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import congr.baeta.BaetaBuilds.dto.cadastro.DadosCondominioDTO;
 import congr.baeta.BaetaBuilds.dto.cadastro.RetornoCadAptoDTO;
 import congr.baeta.BaetaBuilds.dto.cadastro.RetornoCadTorreDTO;
+import congr.baeta.BaetaBuilds.model.Apartamento;
 import congr.baeta.BaetaBuilds.service.ApartamentoService;
 import congr.baeta.BaetaBuilds.service.TerritorioService;
 import congr.baeta.BaetaBuilds.service.TorreService;
@@ -65,6 +67,27 @@ public class CadastroController {
             return ResponseEntity.ok(new RetornoCadTorreDTO(torre, aptos));
         } else {
             return ResponseEntity.badRequest().body(new RetornoCadTorreDTO());
+        }
+    }
+
+    @PostMapping("/individual/{idTorre}/{numApto}")
+    @Transactional
+    public String addApto(@PathVariable Long idTorre, @PathVariable Integer numApto) {
+        var torre = torreService.findById(idTorre);
+        if(torre.isPresent()){
+            //Verifica se o apartamento já existe
+            var aptoExistente = apartamentoService.findApto(numApto, torre.get());
+            if(aptoExistente.isPresent()){
+                return "Apartamento já cadastrado";
+            } else{
+                var apto = new Apartamento(numApto, torre.get());
+                apartamentoService.salvarApto(apto);
+            }
+            torreService.addAptoTorre(torre.get(), 1);
+            territorioService.addAptoTerritorio(torre.get().getTerritorio(), 1);
+            return "Apartamento cadastrado com sucesso";
+        } else {
+            return "Torre não encontrada";
         }
     }
 }

@@ -3,6 +3,7 @@ package congr.baeta.BaetaBuilds.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -113,5 +114,13 @@ public class ApartamentoService {
     @Transactional
     public void resetarAptos() {
         apartamentoRepository.resetarAptos();
+    }
+
+    public Optional<Apartamento> findApto(Integer numApto, Torre torre) {
+        return apartamentoRepository.findApto(numApto, torre.getTorreID());
+    }
+
+    public void salvarApto(Apartamento apto) {
+        apartamentoRepository.save(apto);
     }
 }
