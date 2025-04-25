@@ -6,18 +6,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import congr.baeta.BaetaBuilds.service.ApartamentoService;
 import congr.baeta.BaetaBuilds.service.HistoricoService;
-import congr.baeta.BaetaBuilds.service.TerritorioService;
+import congr.baeta.BaetaBuilds.service.ResetarService;
 
 @RestController
 @RequestMapping("/resetar")
 public class ResetarController {
 
     @Autowired
-    ApartamentoService aptoService;
-    @Autowired
-    TerritorioService territorioService;
+    ResetarService resetarService;
+
     @Autowired
     HistoricoService historicoService;
 
@@ -26,8 +24,8 @@ public class ResetarController {
         //Gerar novo histórico
         historicoService.gerarHistorico();
         // Lógica para resetar histórico de aptos e territórios concluídos
-        aptoService.resetarAptos();
-        territorioService.resetarTerritorios();
+        resetarService.resetarAptos();
+        resetarService.resetarTerritorios();
 
         return ResponseEntity.ok("Todos os territórios foram resetados com sucesso!");
     }

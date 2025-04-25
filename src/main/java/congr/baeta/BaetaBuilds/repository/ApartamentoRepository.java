@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
 
 import congr.baeta.BaetaBuilds.model.Apartamento;
-import congr.baeta.BaetaBuilds.model.Torre;
 
 public interface ApartamentoRepository extends JpaRepository<Apartamento, Long> {
 

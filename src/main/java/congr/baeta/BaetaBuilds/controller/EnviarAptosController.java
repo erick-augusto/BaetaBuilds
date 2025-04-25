@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import congr.baeta.BaetaBuilds.dto.responsavel.ResponsavelDTO;
 import congr.baeta.BaetaBuilds.dto.responsavel.RetornoAptosAleatoriosDTO;
-import congr.baeta.BaetaBuilds.service.ApartamentoService;
+import congr.baeta.BaetaBuilds.service.EnviarAptosService;
 import jakarta.validation.Valid;
 
 @RestController
@@ -19,7 +19,7 @@ import jakarta.validation.Valid;
 public class EnviarAptosController {
 
     @Autowired
-    ApartamentoService service;
+    EnviarAptosService service;
 
     @GetMapping
     public ResponseEntity<List<RetornoAptosAleatoriosDTO>> aptosAleatorios(@RequestBody @Valid ResponsavelDTO responsavel){
@@ -28,7 +28,7 @@ public class EnviarAptosController {
             List<RetornoAptosAleatoriosDTO> lista = service.buscarAptosAleatorios(totalSolicitado, responsavel.nome());
             
             return ResponseEntity.ok(lista);
-        } else{
+        } else {
             return ResponseEntity.badRequest().body(List.of());
         }
     }
