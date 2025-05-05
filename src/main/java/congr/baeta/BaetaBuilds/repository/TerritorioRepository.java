@@ -31,4 +31,15 @@ public interface TerritorioRepository extends JpaRepository<Territorio, Long>{
         WHERE t.territorioID = :territorioID
     """)
     void addAptoTerritorio(Long territorioID, int i);
+
+    @Query("""
+        SELECT COUNT(*) FROM Territorio t
+        WHERE t.dataFim IS NOT NULL
+    """)
+    int countTerritoriosFeitos();
+
+    @Query("""
+        SELECT COUNT(*) FROM Territorio t
+    """)
+    int countTerritorios();
 }
