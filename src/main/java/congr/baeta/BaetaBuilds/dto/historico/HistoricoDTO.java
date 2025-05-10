@@ -17,7 +17,7 @@ public record HistoricoDTO(@NotNull
                           int totDias) {
 
     public HistoricoDTO(Historico historico) {
-        this(historico.getTotAptos(), historico.getNumAptosFeitos(), historico.getDataIni(), historico.getDataFim(), historico.getTotDias());
+        this(historico.getNumAptosFeitos(), historico.getTotAptos(), historico.getDataIni(), historico.getDataFim(), historico.getTotDias());
     }
 
 }
