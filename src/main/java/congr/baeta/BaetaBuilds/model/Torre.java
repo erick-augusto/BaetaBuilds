@@ -2,7 +2,6 @@ package congr.baeta.BaetaBuilds.model;
 
 import java.util.List;
 
-import congr.baeta.BaetaBuilds.dto.CadastroTorreDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,10 +14,12 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Table(name = "torre")
 @Entity(name = "Torre")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "torreID")
@@ -38,14 +39,6 @@ public class Torre {
     
     @OneToMany(mappedBy = "torre")
     private List<Apartamento> apartamentos;
-    
-    public Torre(CadastroTorreDTO dados) {
-        this.cep = dados.cep();
-        this.endereco = dados.endereco();
-        this.nomeTorre = dados.nomeTorre();
-        this.totalAptosTorre = dados.totalAptosTorre();
-        this.territorio = dados.territorio();
-    }
 
     public Torre(String nomeTorre, String endereco, String cep, Integer totalAptos, Territorio territorio) {
         this.nomeTorre = nomeTorre;
@@ -54,4 +47,5 @@ public class Torre {
         this.totalAptosTorre = totalAptos;
         this.territorio = territorio;
     }
+
 }
