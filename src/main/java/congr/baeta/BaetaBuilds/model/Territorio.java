@@ -4,7 +4,6 @@ package congr.baeta.BaetaBuilds.model;
 import java.time.LocalDate;
 import java.util.List;
 
-import congr.baeta.BaetaBuilds.dto.DadosTerritorioDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,12 +34,6 @@ public class Territorio {
 
     @OneToMany(mappedBy = "territorio")
     private List<Torre> torres;
-
-    public Territorio(DadosTerritorioDTO dados) {
-        this.dataInicio = dados.dataInicio();
-        this.dataFim = dados.dataFim();
-        this.totalAptos = dados.totalAptos();
-    }
 
     public Territorio(int totalAptos) {
         this.totalAptos = totalAptos;

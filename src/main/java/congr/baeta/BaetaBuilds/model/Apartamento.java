@@ -2,7 +2,6 @@ package congr.baeta.BaetaBuilds.model;
 
 import java.time.LocalDate;
 
-import congr.baeta.BaetaBuilds.dto.CadastroApartamentoDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,13 +34,6 @@ public class Apartamento {
     @ManyToOne
     @JoinColumn(name = "torreID")
     private Torre torre;
-    
-    public Apartamento(CadastroApartamentoDTO cadastro) {
-        this.numApto = cadastro.numApto();
-        this.dataEntrega = cadastro.dataEntrega();
-        this.nomeResponsavel = cadastro.nomeResponsavel();
-        this.torre = cadastro.torre();
-    }
 
     public Apartamento(int numApto, Torre torre) {
         this.numApto = numApto;
