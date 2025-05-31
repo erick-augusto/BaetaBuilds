@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import congr.baeta.BaetaBuilds.dto.historico.HistoricoDTO;
 import congr.baeta.BaetaBuilds.service.HistoricoService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @RequestMapping("/historico")
+@SecurityRequirement(name = "bearer-key")
 public class HistoricoController {
 
     @Autowired

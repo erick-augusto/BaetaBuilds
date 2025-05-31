@@ -15,11 +15,13 @@ import congr.baeta.BaetaBuilds.dto.cadastro.RetornoCadAptoDTO;
 import congr.baeta.BaetaBuilds.dto.cadastro.RetornoCadTorreDTO;
 import congr.baeta.BaetaBuilds.model.Apartamento;
 import congr.baeta.BaetaBuilds.service.CadastroService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/cadastro")
+@SecurityRequirement(name = "bearer-key")
 public class CadastroController {
 
     @Autowired

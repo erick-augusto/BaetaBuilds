@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import congr.baeta.BaetaBuilds.dto.historico.EstatisticaDTO;
 import congr.baeta.BaetaBuilds.service.EstatisticaService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @RequestMapping("/estatisticas")
+@SecurityRequirement(name = "bearer-key")
 public class EstatisticaController {
 
     @Autowired

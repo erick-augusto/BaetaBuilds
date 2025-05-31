@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import congr.baeta.BaetaBuilds.dto.responsavel.ResponsavelDTO;
 import congr.baeta.BaetaBuilds.dto.responsavel.RetornoAptosAleatoriosDTO;
 import congr.baeta.BaetaBuilds.service.EnviarAptosService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/enviar")
+@SecurityRequirement(name = "bearer-key")
 public class EnviarAptosController {
 
     @Autowired
