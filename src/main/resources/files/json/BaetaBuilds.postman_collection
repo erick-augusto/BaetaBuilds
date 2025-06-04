@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "c4112a47-c216-4716-a66d-6aedb2c43b1b",
+		"name": "Baeta Builds",
+		"description": "Coleção para testes do projeto.\n\nExemplos para gerenciamento de territórios, torres e apartamentos, oferecendo funcionalidades para cadastro, administração e controle operacional dessas estruturas.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15176067"
+	},
+	"item": [
+		{
+			"name": "Cadastro",
+			"item": [
+				{
+					"name": "Cadastro Completo de Território",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlcmljay5hdWd1c3RvIiwiaXNzIjoiQVBJIFZvbGwubWVkIiwiZXhwIjoxNzQ5MDc3MTU2fQ.paXni4WZTaPRQ-MbH44anCrhuq73jPt2WN9qLMMn71U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"territorioID\": null,\r\n    \"nomeTorre\": \"Torre A\",\r\n    \"endereco\": \"Avenida Principal, 1500\",\r\n    \"cep\": \"09750-100\",\r\n    \"totalAptosTorre\": 56,\r\n    \"primAndIni\": 11,\r\n    \"primAndFim\": 14,\r\n    \"ultAndIni\": 141,\r\n    \"ultAndFim\": 144\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastro/novo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastro",
+								"novo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro de nova Torre em Território",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlcmljay5hdWd1c3RvIiwiaXNzIjoiQVBJIFZvbGwubWVkIiwiZXhwIjoxNzQ5MDc3MTU2fQ.paXni4WZTaPRQ-MbH44anCrhuq73jPt2WN9qLMMn71U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"territorioID\": 4,\r\n    \"nomeTorre\": \"Torre B\",\r\n    \"endereco\": \"Avenida Principal, 1500\",\r\n    \"cep\": \"09750-100\",\r\n    \"totalAptosTorre\": 56,\r\n    \"primAndIni\": 11,\r\n    \"primAndFim\": 14,\r\n    \"ultAndIni\": 141,\r\n    \"ultAndFim\": 144\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastro/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastro",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastro com números sequenciais",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlcmljay5hdWd1c3RvIiwiaXNzIjoiQVBJIFZvbGwubWVkIiwiZXhwIjoxNzQ5MDc3MTU2fQ.paXni4WZTaPRQ-MbH44anCrhuq73jPt2WN9qLMMn71U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"territorioID\": null,\r\n    \"nomeTorre\": null,\r\n    \"endereco\": \"Rua ABC, 50\",\r\n    \"cep\": \"09350-450\",\r\n    \"totalAptosTorre\": 6,\r\n    \"primAndIni\": 1,\r\n    \"primAndFim\": 6,\r\n    \"ultAndIni\": null,\r\n    \"ultAndFim\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastro/novo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastro",
+								"novo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionando apartamento individualmente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlcmljay5hdWd1c3RvIiwiaXNzIjoiQVBJIFZvbGwubWVkIiwiZXhwIjoxNzQ5MDc3MTU2fQ.paXni4WZTaPRQ-MbH44anCrhuq73jPt2WN9qLMMn71U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cadastro/individual/7/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cadastro",
+								"individual",
+								"7",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Grupo de endpoints de gerenciamento da estrutura física dos territórios.\n\nInclui operações como cadastro completo de territórios, inserção de torres adicionais, também permite adicionar apartamentos individualmente.\n\nA estrutura conta com a definição de endereço, CEP, nome da torre, número do apartamento e total de apartamentos."
+		},
+		{
+			"name": "Ações",
+			"item": [
+				{
+					"name": "Listando territórios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlcmljay5hdWd1c3RvIiwiaXNzIjoiQVBJIFZvbGwubWVkIiwiZXhwIjoxNzQ5MDc3MTU2fQ.paXni4WZTaPRQ-MbH44anCrhuq73jPt2WN9qLMMn71U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/territorio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"territorio"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscando apartamentos aleatórios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlcmljay5hdWd1c3RvIiwiaXNzIjoiQVBJIFZvbGwubWVkIiwiZXhwIjoxNzQ5MDc3MTU2fQ.paXni4WZTaPRQ-MbH44anCrhuq73jPt2WN9qLMMn71U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"João\",\r\n    \"totalAptos\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/enviar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"enviar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Historico",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlcmljay5hdWd1c3RvIiwiaXNzIjoiQVBJIFZvbGwubWVkIiwiZXhwIjoxNzQ5MDc3MTU2fQ.paXni4WZTaPRQ-MbH44anCrhuq73jPt2WN9qLMMn71U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/historico",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"historico"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Estatísticas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlcmljay5hdWd1c3RvIiwiaXNzIjoiQVBJIFZvbGwubWVkIiwiZXhwIjoxNzQ5MDc3MTU2fQ.paXni4WZTaPRQ-MbH44anCrhuq73jPt2WN9qLMMn71U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/estatisticas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estatisticas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resetar Territórios",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/resetar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"resetar"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Grupo de endpoints com funcionalidades operacionais sobre os territórios cadastrados.\n\nPermite listar territórios, buscar apartamentos de forma aleatória, consultar histórico, visualizar estatísticas de uso e efetuar a reinicialização (reset) dos dados dos territórios."
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"login\": \"usuario\",\r\n    \"senha\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
